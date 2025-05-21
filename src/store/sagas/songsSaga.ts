@@ -22,7 +22,7 @@ import { fetchStatisticsRequest } from '../slices/statisticsSlice';
 import { showNotification } from '../slices/uiSlice';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://addis-music-backend-8e7a.onrender.com/api';
 
 // Worker Sagas
 function* fetchSongsSaga(): Generator<any, void, any> {

@@ -7,10 +7,12 @@ import {
 } from '../slices/statisticsSlice';
 import { showNotification } from '../slices/uiSlice';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://addis-music-backend-8e7a.onrender.com/api';
 
 // Worker Saga
-function* fetchStatisticsSaga() {
+import { SagaIterator } from 'redux-saga';
+
+function* fetchStatisticsSaga(): SagaIterator {
   try {
     const response = yield call(axios.get, `${API_URL}/statistics`);
     yield put(fetchStatisticsSuccess(response.data));
