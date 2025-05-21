@@ -19,7 +19,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'MONGODB_URI=mongodb+srv://zeruhabesha09:gl3c7NNUBzg8Xnci@cluster0.com3e7z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect(process.env.MONGODB_URI || 'MONGODB_URI=mongodb+srv://zeruhabesha09:_______________@cluster0.com3e7z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
