@@ -25,7 +25,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 const API_URL = 'http://localhost:5000/api';
 
 // Worker Sagas
-function* fetchSongsSaga() {
+function* fetchSongsSaga(): Generator<any, void, any> {
   try {
     const response = yield call(axios.get, `${API_URL}/songs`);
     yield put(fetchSongsSuccess(response.data));
@@ -36,7 +36,7 @@ function* fetchSongsSaga() {
   }
 }
 
-function* fetchSongSaga(action: PayloadAction<string>) {
+function* fetchSongSaga(action: PayloadAction<string>): Generator<any, void, any> {
   try {
     const id = action.payload;
     const response = yield call(axios.get, `${API_URL}/songs/${id}`);
@@ -48,7 +48,7 @@ function* fetchSongSaga(action: PayloadAction<string>) {
   }
 }
 
-function* createSongSaga(action: PayloadAction<SongFormData>) {
+function* createSongSaga(action: PayloadAction<SongFormData>): Generator<any, void, any> {
   try {
     const songData = action.payload;
     const response = yield call(axios.post, `${API_URL}/songs`, songData);
@@ -62,7 +62,7 @@ function* createSongSaga(action: PayloadAction<SongFormData>) {
   }
 }
 
-function* updateSongSaga(action: PayloadAction<{ id: string; data: SongFormData }>) {
+function* updateSongSaga(action: PayloadAction<{ id: string; data: SongFormData }>): Generator<any, void, any> {
   try {
     const { id, data } = action.payload;
     const response = yield call(axios.put, `${API_URL}/songs/${id}`, data);
@@ -76,7 +76,7 @@ function* updateSongSaga(action: PayloadAction<{ id: string; data: SongFormData 
   }
 }
 
-function* deleteSongSaga(action: PayloadAction<string>) {
+function* deleteSongSaga(action: PayloadAction<string>): Generator<any, void, any> {
   try {
     const id = action.payload;
     yield call(axios.delete, `${API_URL}/songs/${id}`);
@@ -91,7 +91,7 @@ function* deleteSongSaga(action: PayloadAction<string>) {
 }
 
 // Watcher Saga
-export default function* songsSaga() {
+export default function* songsSaga(): Generator<any, void, any> {
   yield all([
     takeLatest(fetchSongsRequest.type, fetchSongsSaga),
     takeLatest(fetchSongRequest.type, fetchSongSaga),
